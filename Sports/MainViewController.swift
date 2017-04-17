@@ -11,10 +11,13 @@ import HealthKit
 
 class MainViewController: UITableViewController {
     var workouts: [String] = ["one", "two", "three"]
+    let healthMgr: HealthManager = HealthManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        healthMgr.authorizeHealthKit()
     }
 
     override func didReceiveMemoryWarning() {

@@ -23,6 +23,7 @@
 		C0BD86FD1EA2321100D64AD7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86FC1EA2321100D64AD7 /* NotificationController.swift */; };
 		C0BD86FF1EA2321100D64AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0BD86FE1EA2321100D64AD7 /* Assets.xcassets */; };
 		C0BD871A1EA4B98700D64AD7 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BD87191EA4B98700D64AD7 /* HealthKit.framework */; };
+		C0BD871E1EA4C2EE00D64AD7 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD871D1EA4C2EE00D64AD7 /* HealthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		C0BD87001EA2321100D64AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0BD87171EA4B98700D64AD7 /* Sports.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sports.entitlements; sourceTree = "<group>"; };
 		C0BD87191EA4B98700D64AD7 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		C0BD871D1EA4C2EE00D64AD7 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				C0BD87171EA4B98700D64AD7 /* Sports.entitlements */,
 				C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */,
 				C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */,
+				C0BD871D1EA4C2EE00D64AD7 /* HealthManager.swift */,
 				C0BD86C11EA2321100D64AD7 /* Main.storyboard */,
 				C0BD86C41EA2321100D64AD7 /* Assets.xcassets */,
 				C0BD86C61EA2321100D64AD7 /* LaunchScreen.storyboard */,
@@ -447,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0BD86C01EA2321100D64AD7 /* MainViewController.swift in Sources */,
+				C0BD871E1EA4C2EE00D64AD7 /* HealthManager.swift in Sources */,
 				C0BD86BE1EA2321100D64AD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
