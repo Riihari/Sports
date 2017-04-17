@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C0BD86BE1EA2321100D64AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */; };
-		C0BD86C01EA2321100D64AD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86BF1EA2321100D64AD7 /* ViewController.swift */; };
+		C0BD86C01EA2321100D64AD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */; };
 		C0BD86C31EA2321100D64AD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0BD86C11EA2321100D64AD7 /* Main.storyboard */; };
 		C0BD86C51EA2321100D64AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0BD86C41EA2321100D64AD7 /* Assets.xcassets */; };
 		C0BD86C81EA2321100D64AD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0BD86C61EA2321100D64AD7 /* LaunchScreen.storyboard */; };
@@ -22,6 +22,7 @@
 		C0BD86FB1EA2321100D64AD7 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86FA1EA2321100D64AD7 /* ExtensionDelegate.swift */; };
 		C0BD86FD1EA2321100D64AD7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86FC1EA2321100D64AD7 /* NotificationController.swift */; };
 		C0BD86FF1EA2321100D64AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0BD86FE1EA2321100D64AD7 /* Assets.xcassets */; };
+		C0BD871A1EA4B98700D64AD7 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BD87191EA4B98700D64AD7 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +84,7 @@
 /* Begin PBXFileReference section */
 		C0BD86BA1EA2321100D64AD7 /* Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C0BD86BF1EA2321100D64AD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C0BD86C21EA2321100D64AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0BD86C41EA2321100D64AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0BD86C71EA2321100D64AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -105,6 +106,8 @@
 		C0BD86FC1EA2321100D64AD7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C0BD86FE1EA2321100D64AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0BD87001EA2321100D64AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0BD87171EA4B98700D64AD7 /* Sports.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sports.entitlements; sourceTree = "<group>"; };
+		C0BD87191EA4B98700D64AD7 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0BD871A1EA4B98700D64AD7 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +152,7 @@
 				C0BD86E61EA2321100D64AD7 /* Sports WatchKit App */,
 				C0BD86F51EA2321100D64AD7 /* Sports WatchKit Extension */,
 				C0BD86BB1EA2321100D64AD7 /* Products */,
+				C0BD87181EA4B98700D64AD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,8 +171,9 @@
 		C0BD86BC1EA2321100D64AD7 /* Sports */ = {
 			isa = PBXGroup;
 			children = (
+				C0BD87171EA4B98700D64AD7 /* Sports.entitlements */,
 				C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */,
-				C0BD86BF1EA2321100D64AD7 /* ViewController.swift */,
+				C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */,
 				C0BD86C11EA2321100D64AD7 /* Main.storyboard */,
 				C0BD86C41EA2321100D64AD7 /* Assets.xcassets */,
 				C0BD86C61EA2321100D64AD7 /* LaunchScreen.storyboard */,
@@ -223,6 +229,14 @@
 				C0BD86F71EA2321100D64AD7 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0BD87181EA4B98700D64AD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0BD87191EA4B98700D64AD7 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +345,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = UWG9LT8HWX;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					C0BD86CD1EA2321100D64AD7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -427,7 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0BD86C01EA2321100D64AD7 /* ViewController.swift in Sources */,
+				C0BD86C01EA2321100D64AD7 /* MainViewController.swift in Sources */,
 				C0BD86BE1EA2321100D64AD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,6 +697,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sports/Sports.entitlements;
 				DEVELOPMENT_TEAM = UWG9LT8HWX;
 				INFOPLIST_FILE = Sports/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -691,6 +711,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sports/Sports.entitlements;
 				DEVELOPMENT_TEAM = UWG9LT8HWX;
 				INFOPLIST_FILE = Sports/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
