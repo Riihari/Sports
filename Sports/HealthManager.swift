@@ -27,4 +27,19 @@ class HealthManager {
             }
         })
     }
+    
+    func readWorkOuts(_ completion: @escaping ([AnyObject]?, Error?) -> Void) {
+        let predicate =  HKQuery.predicateForWorkouts(with: HKWorkoutActivityType.running)
+        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+        let sampleQuery = HKSampleQuery(sampleType: HKWorkoutType.workoutType(), predicate: predicate, limit: 20, sortDescriptors: [sortDescriptor])
+        { (sampleQuery, results, error ) -> Void in
+            if let queryError = error {
+                print( "There was an error while reading the samples: \(queryError.localizedDescription)")
+            }
+            completion(results,error)
+        }
+
+        healthKitStore.execute(sampleQuery)
+    }
+
 }

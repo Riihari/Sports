@@ -10,7 +10,7 @@ import UIKit
 import HealthKit
 
 class MainViewController: UITableViewController {
-    var workouts: [String] = ["one", "two", "three"]
+    var workouts = [HKWorkout]()
     let healthMgr: HealthManager = HealthManager()
 
     override func viewDidLoad() {
@@ -18,6 +18,8 @@ class MainViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         healthMgr.authorizeHealthKit()
+        
+        tableView.contentInset.top = UIApplication.shared.statusBarFrame.height
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +30,18 @@ class MainViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("Starting")
+        healthMgr.readWorkOuts({(results, error) -> Void in
+            if error != nil {
+                print("Error reading workouts!")
+                return
+            }
+            
+            self.workouts = results as! [HKWorkout]
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.tableView.reloadData()
+            });
+        
+        })
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,8 +51,23 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "workoutcellid", for: indexPath)
         
-        cell.textLabel?.text = workouts[indexPath.row]
-        cell.detailTextLabel?.text = "TBD"
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
+        
+        let workout = workouts[indexPath.row]
+        cell.textLabel?.text = formatter.string(from: workout.startDate)
+        
+        var detailText: String = "Duration: "
+        let durationFormatter = DateComponentsFormatter()
+        detailText += durationFormatter.string(from: workout.duration)!
+        
+        let distanceFormatter = LengthFormatter()
+        detailText += " Distance: "
+        let distanceInKm = workout.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: HKMetricPrefix.kilo))
+        detailText += distanceFormatter.string(fromValue: distanceInKm!, unit: LengthFormatter.Unit.kilometer)
+
+        cell.detailTextLabel?.text = detailText
         
         return cell
     }
