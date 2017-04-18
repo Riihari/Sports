@@ -11,20 +11,15 @@ import HealthKit
 class HealthManager {
     let healthKitStore: HKHealthStore = HKHealthStore()
     
-    func authorizeHealthKit() -> Void {
+    func authorizeHealthKit(_ completion: @escaping (Bool, Error?) -> Void) {
         if !HKHealthStore.isHealthDataAvailable() {
             print("No health data")
-            return
+            completion(false, nil)
         }
         
         let readTypes: Set<HKObjectType> = [HKObjectType.workoutType()]
         healthKitStore.requestAuthorization(toShare: nil, read: readTypes, completion: {(authorization: Bool, error: Error?) -> Void in
-            if error != nil {
-                print("Authorization denied")
-            }
-            else {
-                print("Authorized")
-            }
+            completion(authorization, error)
         })
     }
     

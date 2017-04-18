@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C03D6DFB1EA63D16009933B8 /* DetailWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D6DFA1EA63D16009933B8 /* DetailWorkoutViewController.swift */; };
 		C0BD86BE1EA2321100D64AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */; };
 		C0BD86C01EA2321100D64AD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */; };
 		C0BD86C31EA2321100D64AD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0BD86C11EA2321100D64AD7 /* Main.storyboard */; };
@@ -83,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C03D6DFA1EA63D16009933B8 /* DetailWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailWorkoutViewController.swift; sourceTree = "<group>"; };
 		C0BD86BA1EA2321100D64AD7 /* Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */,
 				C0BD871D1EA4C2EE00D64AD7 /* HealthManager.swift */,
 				C0BD86C11EA2321100D64AD7 /* Main.storyboard */,
+				C03D6DFA1EA63D16009933B8 /* DetailWorkoutViewController.swift */,
 				C0BD86C41EA2321100D64AD7 /* Assets.xcassets */,
 				C0BD86C61EA2321100D64AD7 /* LaunchScreen.storyboard */,
 				C0BD86C91EA2321100D64AD7 /* Info.plist */,
@@ -452,6 +455,7 @@
 				C0BD86C01EA2321100D64AD7 /* MainViewController.swift in Sources */,
 				C0BD871E1EA4C2EE00D64AD7 /* HealthManager.swift in Sources */,
 				C0BD86BE1EA2321100D64AD7 /* AppDelegate.swift in Sources */,
+				C03D6DFB1EA63D16009933B8 /* DetailWorkoutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +806,7 @@
 				C0BD87051EA2321100D64AD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0BD87071EA2321100D64AD7 /* Build configuration list for PBXNativeTarget "Sports WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -810,6 +815,7 @@
 				C0BD87091EA2321100D64AD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0BD870B1EA2321100D64AD7 /* Build configuration list for PBXNativeTarget "Sports" */ = {
 			isa = XCConfigurationList;
@@ -818,6 +824,7 @@
 				C0BD870D1EA2321100D64AD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0BD870E1EA2321100D64AD7 /* Build configuration list for PBXNativeTarget "SportsTests" */ = {
 			isa = XCConfigurationList;
@@ -826,6 +833,7 @@
 				C0BD87101EA2321100D64AD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0BD87111EA2321100D64AD7 /* Build configuration list for PBXNativeTarget "SportsUITests" */ = {
 			isa = XCConfigurationList;
@@ -834,6 +842,7 @@
 				C0BD87131EA2321100D64AD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

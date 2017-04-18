@@ -12,12 +12,11 @@ import HealthKit
 class MainViewController: UITableViewController {
     var workouts = [HKWorkout]()
     let healthMgr: HealthManager = HealthManager()
+    var selectedWorkout: HKWorkout?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        healthMgr.authorizeHealthKit()
         
         tableView.contentInset.top = UIApplication.shared.statusBarFrame.height
     }
@@ -30,17 +29,27 @@ class MainViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        healthMgr.readWorkOuts({(results, error) -> Void in
-            if error != nil {
-                print("Error reading workouts!")
-                return
+        healthMgr.authorizeHealthKit({(success, error) -> Void in
+            if !success {
+                print("No healthkit in device")
             }
-            
-            self.workouts = results as! [HKWorkout]
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.tableView.reloadData()
-            });
-        
+            if error != nil {
+                print("Authorization failed: \(error)")
+            }
+            else {
+                print("Authorized")
+                self.healthMgr.readWorkOuts({(results, error) -> Void in
+                    if error != nil {
+                        print("Error reading workouts!")
+                        return
+                    }
+                    
+                    self.workouts = results as! [HKWorkout]
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.tableView.reloadData()
+                    });
+                })
+            }
         })
     }
     
@@ -70,6 +79,16 @@ class MainViewController: UITableViewController {
         cell.detailTextLabel?.text = detailText
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailWorkout" {
+            let destinationViewController = segue.destination as! DetailWorkoutViewController
+            let cell = sender as? UITableViewCell
+            let indexPath = tableView.indexPath(for: cell!)
+            destinationViewController.workout = workouts[(indexPath?.row)!]
+            destinationViewController.healthMgr = healthMgr
+        }
     }
 }
 
