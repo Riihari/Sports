@@ -17,7 +17,9 @@ class HealthManager {
             completion(false, nil)
         }
         
-        let readTypes: Set<HKObjectType> = [HKObjectType.workoutType()]
+        let readTypes: Set<HKObjectType> = [
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
+            HKObjectType.workoutType()]
         healthKitStore.requestAuthorization(toShare: nil, read: readTypes, completion: {(authorization: Bool, error: Error?) -> Void in
             completion(authorization, error)
         })
@@ -36,5 +38,48 @@ class HealthManager {
 
         healthKitStore.execute(sampleQuery)
     }
-
+    
+    func readAvgHr(_ workout: HKWorkout, _ completion: @escaping ([AnyObject]?, Error?) -> Void) {
+        let predicate = HKQuery.predicateForObjects(from: workout)
+        let hrType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        
+        let query = HKStatisticsQuery(quantityType: hrType!, quantitySamplePredicate: predicate, options: .discreteAverage, completionHandler: {(sampleQuery, result, error) in
+            if error != nil {
+                completion(nil, error)
+            }
+            let average = result!.averageQuantity()
+            print("Average \(average)")
+//            completion([average], error)
+            completion(nil, error)
+        })
+        
+        healthKitStore.execute(query)
+    }
+    
+    func readHrSamples(_ workout: HKWorkout, _ completion: @escaping ([AnyObject]?, Error?) -> Void) {
+        //let predicate = HKQuery.predicateForObjects(from: workout)
+        let hrType = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        let predicate = HKQuery.predicateForSamples(withStart: workout.startDate, end: workout.endDate, options: [])
+        
+        let startDateSort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
+        
+        let query = HKSampleQuery(sampleType: hrType!, predicate: predicate, limit: 0, sortDescriptors: [startDateSort], resultsHandler: {(sampleQuery, results, error) -> Void in
+            if error == nil {
+                if let hrSamples = results as? [HKQuantitySample] {
+                    let hrSamplesCount = hrSamples.count
+                    print("Results \(hrSamplesCount)")
+                }
+                else {
+                    print("No results")
+                }
+            }
+            else {
+                print("HR query error")
+            }
+            
+            completion(results, error)
+        })
+        
+        healthKitStore.execute(query)
+    }
 }

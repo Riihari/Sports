@@ -67,12 +67,12 @@ class MainViewController: UITableViewController {
         let workout = workouts[indexPath.row]
         cell.textLabel?.text = formatter.string(from: workout.startDate)
         
-        var detailText: String = "Duration: "
+        var detailText: String = "Aika: "
         let durationFormatter = DateComponentsFormatter()
         detailText += durationFormatter.string(from: workout.duration)!
         
         let distanceFormatter = LengthFormatter()
-        detailText += " Distance: "
+        detailText += " Matka: "
         let distanceInKm = workout.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: HKMetricPrefix.kilo))
         detailText += distanceFormatter.string(fromValue: distanceInKm!, unit: LengthFormatter.Unit.kilometer)
 
