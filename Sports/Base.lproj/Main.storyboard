@@ -223,6 +223,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ef-Ia-09M" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="394" width="375" height="273"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -231,6 +236,7 @@
                         <outlet property="dateLabel" destination="45N-eu-bwM" id="dgq-7G-PCy"/>
                         <outlet property="distanceLabel" destination="91T-1D-Lu1" id="Xp8-4v-ohN"/>
                         <outlet property="durationLabel" destination="GbU-RR-oia" id="dDa-rG-cck"/>
+                        <outlet property="lineChartView" destination="2Ef-Ia-09M" id="JKW-vn-IDv"/>
                         <outlet property="tz1Label" destination="VOb-s3-s20" id="g1c-jk-LX0"/>
                         <outlet property="tz1PercentLabel" destination="HZj-3u-5Pw" id="MTw-l6-TJ2"/>
                         <outlet property="tz2Label" destination="Ds2-wi-FND" id="uft-hn-kLN"/>
