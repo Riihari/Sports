@@ -45,7 +45,7 @@ class DetailWorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        axisFormatDelegate = self as? IAxisValueFormatter
+        axisFormatDelegate = self
         
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -187,8 +187,6 @@ class DetailWorkoutViewController: UIViewController {
         
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.chartDescription?.text = ""
-        
-        lineChartView.backgroundColor = UIColor.darkGray
         
         let xaxis = lineChartView.xAxis
         xaxis.valueFormatter = axisFormatDelegate

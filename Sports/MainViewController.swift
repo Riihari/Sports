@@ -18,7 +18,8 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        tableView.contentInset.top = UIApplication.shared.statusBarFrame.height
+        navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        tableView.backgroundColor = UIColor.darkGray
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,6 +78,10 @@ class MainViewController: UITableViewController {
         detailText += distanceFormatter.string(fromValue: distanceInKm!, unit: LengthFormatter.Unit.kilometer)
 
         cell.detailTextLabel?.text = detailText
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.gray
+        cell.selectedBackgroundView = backgroundView
         
         return cell
     }
