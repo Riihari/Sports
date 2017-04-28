@@ -72,28 +72,20 @@ class DetailWorkoutViewController: UIViewController {
                 if let hrSamples = results as? [HKQuantitySample] {
                     let hrSamplesCount = hrSamples.count
                     if hrSamplesCount > 0 {
-                        
-                        print("Results \(hrSamplesCount)")
-                    
                         var sum: Double = 0
                         var hrValues = [Int]()
                         var hrTimes = [Date]()
-                        var printed = false
                         
+                        let workoutStart = self.workout?.startDate
+                        let calendar = Calendar.current
+
                         for sample in hrSamples {
-                            let hrTimeInterval = sample.startDate.timeIntervalSince1970 - (self.workout?.startDate.timeIntervalSince1970)!
-                            if printed != true {
-                                print(hrTimeInterval)
-                                
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "HH:mm.ss"
-                                print(dateFormatter.string(from: Date(timeIntervalSince1970: hrTimeInterval)))
-                                
-                                printed = true
-                            }
-                            let hrTime: Date = Date(timeIntervalSince1970: hrTimeInterval)
+                            let hrTimeStamp = sample.startDate
                             
-                            hrTimes.append(hrTime)
+                            let differenceComponents = calendar.dateComponents([.hour, .minute, .second], from: workoutStart!, to: hrTimeStamp)
+                            let hrTime = calendar.date(from: differenceComponents)
+                            
+                            hrTimes.append(hrTime!)
                             
                             let hrValue = sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
                             sum += hrValue
@@ -142,17 +134,13 @@ class DetailWorkoutViewController: UIViewController {
                             self.tz4PercentLabel.text = String(Int(tz4Percent*100)) + "%"
                             self.tz5Label.text = tz5Text
                             self.tz5PercentLabel.text = String(Int(tz5Percent*100)) + "%"
+                            
                             self.setChart(dataPoints: hrTimes, values: hrValues)
                         })
                     }
                 }
             }
         })
-        
-        //months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        //let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        
-        //setChart(dataPoints: months, values: unitsSold)
     }
     
     func setChart(dataPoints: [Date], values: [Int]) {
@@ -163,15 +151,20 @@ class DetailWorkoutViewController: UIViewController {
         for i in 0..<dataPoints.count {
             let timeIntervalforDate: TimeInterval = dataPoints[i].timeIntervalSince1970
             let dataEntry = ChartDataEntry(x: Double(timeIntervalforDate), y: Double(values[i]))
-//            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
 
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Units Sold")
-        //let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Heart rate")
+        chartDataSet.drawCirclesEnabled = false
+        chartDataSet.colors = [UIColor.red]
+        
         let chartData = LineChartData(dataSet: chartDataSet)
         lineChartView.data = chartData
+        
         lineChartView.xAxis.labelPosition = .bottom
+        lineChartView.chartDescription?.text = ""
+        
+        lineChartView.backgroundColor = UIColor.darkGray
         
         let xaxis = lineChartView.xAxis
         xaxis.valueFormatter = axisFormatDelegate
