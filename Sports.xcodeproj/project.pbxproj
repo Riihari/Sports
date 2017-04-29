@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C03D6DFB1EA63D16009933B8 /* DetailWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D6DFA1EA63D16009933B8 /* DetailWorkoutViewController.swift */; };
+		C0595CE61EB336DD00B3AAB7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0595CE51EB336DD00B3AAB7 /* PageViewController.swift */; };
+		C0595CE81EB34B0E00B3AAB7 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0595CE71EB34B0E00B3AAB7 /* ChartViewController.swift */; };
+		C0595CEA1EB3519200B3AAB7 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0595CE91EB3519200B3AAB7 /* WorkoutViewController.swift */; };
 		C0BD86BE1EA2321100D64AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */; };
 		C0BD86C01EA2321100D64AD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */; };
 		C0BD86C31EA2321100D64AD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0BD86C11EA2321100D64AD7 /* Main.storyboard */; };
@@ -89,6 +92,9 @@
 		22E4E8CAF45E683B15BB374F /* Pods-Sports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sports/Pods-Sports.debug.xcconfig"; sourceTree = "<group>"; };
 		659BF9CB181AEE83031B6B2D /* Pods-Sports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sports/Pods-Sports.release.xcconfig"; sourceTree = "<group>"; };
 		C03D6DFA1EA63D16009933B8 /* DetailWorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailWorkoutViewController.swift; sourceTree = "<group>"; };
+		C0595CE51EB336DD00B3AAB7 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		C0595CE71EB34B0E00B3AAB7 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		C0595CE91EB3519200B3AAB7 /* WorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
 		C0BD86BA1EA2321100D64AD7 /* Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BD86BD1EA2321100D64AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +208,10 @@
 				C0BD86BF1EA2321100D64AD7 /* MainViewController.swift */,
 				C0BD871D1EA4C2EE00D64AD7 /* HealthManager.swift */,
 				C0BD86C11EA2321100D64AD7 /* Main.storyboard */,
+				C0595CE71EB34B0E00B3AAB7 /* ChartViewController.swift */,
+				C0595CE51EB336DD00B3AAB7 /* PageViewController.swift */,
 				C03D6DFA1EA63D16009933B8 /* DetailWorkoutViewController.swift */,
+				C0595CE91EB3519200B3AAB7 /* WorkoutViewController.swift */,
 				C0BD86C41EA2321100D64AD7 /* Assets.xcassets */,
 				C0BD86C61EA2321100D64AD7 /* LaunchScreen.storyboard */,
 				C0BD86C91EA2321100D64AD7 /* Info.plist */,
@@ -528,9 +537,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0BD86C01EA2321100D64AD7 /* MainViewController.swift in Sources */,
+				C0595CE61EB336DD00B3AAB7 /* PageViewController.swift in Sources */,
+				C0595CEA1EB3519200B3AAB7 /* WorkoutViewController.swift in Sources */,
 				C0BD871E1EA4C2EE00D64AD7 /* HealthManager.swift in Sources */,
 				C0BD86BE1EA2321100D64AD7 /* AppDelegate.swift in Sources */,
 				C03D6DFB1EA63D16009933B8 /* DetailWorkoutViewController.swift in Sources */,
+				C0595CE81EB34B0E00B3AAB7 /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

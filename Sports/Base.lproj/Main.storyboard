@@ -45,7 +45,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="e9F-mj-04g" kind="show" identifier="toDetailWorkout" id="7ag-ae-M6k"/>
+                                    <segue destination="SF8-Bq-9LH" kind="show" identifier="toDetailWorkout" id="CTC-vM-3rl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -58,12 +58,20 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmE-cJ-NQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1110" y="152"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="LDX-eF-RWd">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="SF8-Bq-9LH" customClass="PageViewController" customModule="Sports" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwa-m5-OXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1990" y="-169"/>
         </scene>
         <!--Detail Workout View Controller-->
         <scene sceneID="508-hX-a0g">
             <objects>
-                <viewController id="e9F-mj-04g" customClass="DetailWorkoutViewController" customModule="Sports" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailWorkoutController" id="e9F-mj-04g" customClass="DetailWorkoutViewController" customModule="Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U3n-si-vDc"/>
                         <viewControllerLayoutGuide type="bottom" id="dAa-9o-gNi"/>
@@ -226,8 +234,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ef-Ia-09M" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="394" width="375" height="273"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFn-gp-0tv" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="404" width="375" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -236,10 +244,10 @@
                     </view>
                     <connections>
                         <outlet property="avgHrLabel" destination="f0z-pC-gns" id="xsa-Ma-vOk"/>
+                        <outlet property="barChart" destination="sFn-gp-0tv" id="Lrf-5c-vRf"/>
                         <outlet property="dateLabel" destination="45N-eu-bwM" id="dgq-7G-PCy"/>
                         <outlet property="distanceLabel" destination="91T-1D-Lu1" id="Xp8-4v-ohN"/>
                         <outlet property="durationLabel" destination="GbU-RR-oia" id="dDa-rG-cck"/>
-                        <outlet property="lineChartView" destination="2Ef-Ia-09M" id="JKW-vn-IDv"/>
                         <outlet property="tz1Label" destination="VOb-s3-s20" id="g1c-jk-LX0"/>
                         <outlet property="tz1PercentLabel" destination="HZj-3u-5Pw" id="MTw-l6-TJ2"/>
                         <outlet property="tz2Label" destination="Ds2-wi-FND" id="uft-hn-kLN"/>
@@ -254,7 +262,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ed7-fA-iw6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2015.2" y="66.11694152923539"/>
+            <point key="canvasLocation" x="1989.5999999999999" y="535.68215892053979"/>
+        </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="wd1-uw-KIV">
+            <objects>
+                <viewController storyboardIdentifier="ChartController" id="NiA-5y-c2C" customClass="ChartViewController" customModule="Sports" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2K7-Pb-G8g"/>
+                        <viewControllerLayoutGuide type="bottom" id="d2T-pq-tsF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KP7-FH-8fe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHD-Kt-SBK">
+                                <rect key="frame" x="16" y="81" width="343" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Keskisyke" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqh-ye-fIu">
+                                <rect key="frame" x="20" y="134" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdX-oI-LpS">
+                                <rect key="frame" x="120" y="134" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ItN-ir-5cs" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="171" width="375" height="463"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="xHD-Kt-SBK" id="5PC-bw-0pA"/>
+                        <outlet property="hrLabel" destination="zdX-oI-LpS" id="vrk-fS-7Tm"/>
+                        <outlet property="lineChart" destination="ItN-ir-5cs" id="gxv-Yi-1Dr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="old-pq-e2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2877.5999999999999" y="535.68215892053979"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mzI-Il-qLW">

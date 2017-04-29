@@ -34,8 +34,8 @@ class MainViewController: UITableViewController {
             if !success {
                 print("No healthkit in device")
             }
-            if error != nil {
-                print("Authorization failed: \(error)")
+            if error != nil {                
+                print("Authorization failed: " + error!.localizedDescription)
             }
             else {
                 print("Authorized")
@@ -88,7 +88,7 @@ class MainViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailWorkout" {
-            let destinationViewController = segue.destination as! DetailWorkoutViewController
+            let destinationViewController = segue.destination as! PageViewController
             let cell = sender as? UITableViewCell
             let indexPath = tableView.indexPath(for: cell!)
             destinationViewController.workout = workouts[(indexPath?.row)!]
