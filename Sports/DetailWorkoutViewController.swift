@@ -58,44 +58,34 @@ class DetailWorkoutViewController: WorkoutViewController {
         let distanceText = distanceFormatter.string(fromValue: distanceInKm!, unit: LengthFormatter.Unit.kilometer)
         distanceLabel.text = distanceText
         
-        if let hrSamples = samples {
-            let (average, zones) = calculateTrainingZones(hrSamples)
-            updateLabels(average, zones)
+        let parentViewController = parent as! PageViewController
+        if let _ = parentViewController.hrSamples {
+            updateData()
         }
-        else {
-            healthMgr?.readHrSamples(workout!, {(results, error) -> Void in
-                if error == nil {
-                    if let hrSamples = results as? [HKQuantitySample] {
-                        let hrSamplesCount = hrSamples.count
-                        if hrSamplesCount > 0 {
-                            self.samples = hrSamples
-                            
-                            let (average, zones) = self.calculateTrainingZones(hrSamples)
-                            DispatchQueue.main.async(execute: { () -> Void in
-                                self.updateLabels(average, zones)
-                            })
-                        }
-                    }
-                }
-            })
-        }
-    }
+}
     
-    func updateLabels(_ average: Int, _ zones: [TrainingZones]) {
-        self.avgHrLabel.text = String(average)
+    override func updateData() {
+        super.updateData()
         
-        self.tz1Label.text = zones[0].zoneTime
-        self.tz1PercentLabel.text = String(Int(zones[0].zonePercent*100)) + "%"
-        self.tz2Label.text = zones[1].zoneTime
-        self.tz2PercentLabel.text = String(Int(zones[1].zonePercent*100)) + "%"
-        self.tz3Label.text = zones[2].zoneTime
-        self.tz3PercentLabel.text = String(Int(zones[2].zonePercent*100)) + "%"
-        self.tz4Label.text = zones[3].zoneTime
-        self.tz4PercentLabel.text = String(Int(zones[3].zonePercent*100)) + "%"
-        self.tz5Label.text = zones[4].zoneTime
-        self.tz5PercentLabel.text = String(Int(zones[4].zonePercent*100)) + "%"
+        let parentViewController = parent as! PageViewController
+        let (average, zones) = self.calculateTrainingZones(parentViewController.hrSamples!)
         
-        self.setChart(zones)
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.avgHrLabel.text = String(average)
+
+            self.tz1Label.text = zones[0].zoneTime
+            self.tz1PercentLabel.text = String(Int(zones[0].zonePercent*100)) + "%"
+            self.tz2Label.text = zones[1].zoneTime
+            self.tz2PercentLabel.text = String(Int(zones[1].zonePercent*100)) + "%"
+            self.tz3Label.text = zones[2].zoneTime
+            self.tz3PercentLabel.text = String(Int(zones[2].zonePercent*100)) + "%"
+            self.tz4Label.text = zones[3].zoneTime
+            self.tz4PercentLabel.text = String(Int(zones[3].zonePercent*100)) + "%"
+            self.tz5Label.text = zones[4].zoneTime
+            self.tz5PercentLabel.text = String(Int(zones[4].zonePercent*100)) + "%"
+        
+            self.setChart(zones)
+        })
     }
     
     func calculateTrainingZones(_ samples: [HKQuantitySample]) -> (Int, [TrainingZones]) {

@@ -19,6 +19,7 @@ class HealthManager {
         
         let readTypes: Set<HKObjectType> = [
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKObjectType.workoutType()]
         healthKitStore.requestAuthorization(toShare: nil, read: readTypes, completion: {(authorization: Bool, error: Error?) -> Void in
             completion(authorization, error)

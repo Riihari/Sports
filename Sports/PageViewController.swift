@@ -19,6 +19,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
     let pageAmount = PageViews.paceView
     var healthMgr: HealthManager?
     var workout: HKWorkout?
+    var hrSamples: [HKQuantitySample]?
+    
+    var pageContentViewController: WorkoutViewController? = nil
     
     var zones: [TrainingZones]?
     
@@ -32,6 +35,18 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
         pageControl.pageIndicatorTintColor = UIColor.black
         pageControl.currentPageIndicatorTintColor = UIColor.white
         pageControl.backgroundColor = UIColor.darkGray
+        
+        healthMgr?.readHrSamples(workout!, {(results, error) -> Void in
+            if error == nil {
+                if let hrSamples = results as? [HKQuantitySample] {
+                    let hrSamplesCount = hrSamples.count
+                    if hrSamplesCount > 0 {
+                        self.hrSamples = hrSamples
+                        self.pageContentViewController?.updateData()
+                    }
+                }
+            }
+        })
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -60,8 +75,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
     }
     
     func getViewController(_ atIndex: Int) -> WorkoutViewController {
-        let pageContentViewController: WorkoutViewController?
-        
         if PageViews(rawValue: atIndex) == PageViews.timeZoneView {
             pageContentViewController = storyboard?.instantiateViewController(withIdentifier: "DetailWorkoutController") as! DetailWorkoutViewController
         }

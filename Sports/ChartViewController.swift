@@ -28,35 +28,24 @@ class ChartViewController: WorkoutViewController {
         
         let startDate = formatter.string(from: (workout?.startDate)!)
         dateLabel.text = startDate
-
         
-        if let hrSamples = samples {
-            let (average, hrValues, hrTimes) = calculateHeartRates(hrSamples)
-            updateLabels(average, hrValues, hrTimes)
-        }
-        else {
-            healthMgr?.readHrSamples(workout!, {(results, error) -> Void in
-                if error == nil {
-                    if let hrSamples = results as? [HKQuantitySample] {
-                        let hrSamplesCount = hrSamples.count
-                        if hrSamplesCount > 0 {
-                            self.samples = hrSamples
-                            
-                            let (average, hrValues, hrTimes) = self.calculateHeartRates(hrSamples)
-                            DispatchQueue.main.async(execute: { () -> Void in
-                                self.updateLabels(average, hrValues, hrTimes)
-                            })
-                        }
-                    }
-                }
-            })
+        let parentViewController = parent as! PageViewController
+        if let _ = parentViewController.hrSamples {
+            updateData()
         }
     }
     
-    func updateLabels(_ average: Int, _ hrValues: [Int], _ hrTimes: [Date]) {
-        self.hrLabel.text = String(average)
+    override func updateData() {
+        super.updateData()
         
-        self.setChart(dataPoints: hrTimes, values: hrValues)
+        let parentViewController = parent as! PageViewController
+        let (average, hrValues, hrTimes) = self.calculateHeartRates(parentViewController.hrSamples!)
+
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.hrLabel.text = String(average)
+        
+            self.setChart(dataPoints: hrTimes, values: hrValues)
+        })
     }
     
     func calculateHeartRates(_ samples: [HKQuantitySample]) -> (Int, [Int], [Date]) {        

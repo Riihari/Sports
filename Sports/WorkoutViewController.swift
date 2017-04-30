@@ -12,7 +12,10 @@ import HealthKit
 class WorkoutViewController: UIViewController {
     var healthMgr: HealthManager?
     var workout: HKWorkout?
-    var samples: [HKQuantitySample]?
     
     var pageIndex: PageViews = .timeZoneView
+    
+    func updateData() {
+        
+    }
 }
