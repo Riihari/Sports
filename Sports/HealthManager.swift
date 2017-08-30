@@ -27,7 +27,9 @@ class HealthManager {
     }
     
     func readWorkOuts(_ completion: @escaping ([AnyObject]?, Error?) -> Void) {
-        let predicate =  HKQuery.predicateForWorkouts(with: HKWorkoutActivityType.running)
+        let startDate = Date.distantPast
+        let endDate = Date()
+        let predicate =  HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
         let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
         let sampleQuery = HKSampleQuery(sampleType: HKWorkoutType.workoutType(), predicate: predicate, limit: 20, sortDescriptors: [sortDescriptor])
         { (sampleQuery, results, error ) -> Void in

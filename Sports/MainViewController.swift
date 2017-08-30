@@ -66,7 +66,28 @@ class MainViewController: UITableViewController {
         formatter.dateStyle = .medium
         
         let workout = workouts[indexPath.row]
-        cell.textLabel?.text = formatter.string(from: workout.startDate)
+        var titleText: String = ""
+        switch workout.workoutActivityType {
+        case .running:
+            titleText += "Juoksu "
+        case .crossCountrySkiing:
+            titleText += "Hiihto "
+        case .traditionalStrengthTraining:
+            titleText += "Voimaharjoitus "
+        case .coreTraining:
+            titleText += "Voimaharjoitus "
+        case .crossTraining:
+            titleText += "Voimaharjoitus "
+        case .functionalStrengthTraining:
+            titleText += "Voimaharjoitus "
+        case .walking:
+            titleText += "Kävely "
+        default:
+            titleText += "Muu "
+        }
+
+        titleText += formatter.string(from: workout.startDate)
+        cell.textLabel?.text = titleText
         
         var detailText: String = "Aika: "
         let durationFormatter = DateComponentsFormatter()
@@ -76,7 +97,7 @@ class MainViewController: UITableViewController {
         detailText += " Matka: "
         let distanceInKm = workout.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: HKMetricPrefix.kilo))
         detailText += distanceFormatter.string(fromValue: distanceInKm!, unit: LengthFormatter.Unit.kilometer)
-
+        
         cell.detailTextLabel?.text = detailText
         
         let backgroundView = UIView()

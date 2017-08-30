@@ -97,6 +97,11 @@ class ChartViewController: WorkoutViewController {
         
         let xaxis = lineChart.xAxis
         xaxis.valueFormatter = axisFormatDelegate
+        
+        let sum = values.reduce(0, +)
+        let average = sum / values.count
+        let limitLine = ChartLimitLine(limit: Double(average), label: "Keskisyke: \(average)")
+        lineChart.rightAxis.addLimitLine(limitLine)
     }
 }
 
